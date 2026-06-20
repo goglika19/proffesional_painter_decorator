@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Painter Decorator | London</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Vue 3 CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased font-sans">
+
+    <div id="app" class="min-h-screen flex flex-col justify-between">
+        
+        <!-- Header / Hero Section -->
+        <header class="bg-white border-b border-gray-100 py-12 px-4 text-center shadow-sm">
+            <div class="max-w-xl mx-auto">
+                <span class="inline-block bg-indigo-50 text-indigo-600 text-xs font-semibold tracking-widest uppercase px-3 py-1 rounded-full mb-3">
+                    London & Surrounding Areas
+                </span>
+                <h1 class="text-3xl font-bold text-gray-900 tracking-tight sm:text-4xl mb-3">
+                    Professional Painter Decorator
+                </h1>
+                <p class="text-lg text-gray-600 mb-6">
+                    High-quality interior and exterior painting services. Transforming spaces across London with flawless finishes.
+                </p>
+                <div class="flex justify-center space-x-4 text-sm font-medium text-gray-500">
+                    <span class="flex items-center">✓ Domestic</span>
+                    <span class="flex items-center">✓ Commercial</span>
+                    <span class="flex items-center">✓ Free Estimates</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-grow max-w-md w-full mx-auto px-4 py-8 flex flex-col justify-center">
+            
+            <!-- Quote Card Component -->
+            <div class="bg-white rounded-2xl shadow-xl p-6 border border-gray-100 text-center space-y-6">
+                <div class="bg-indigo-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto text-2xl">
+                    🎨
+                </div>
+                
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-900">Need a Quote?</h2>
+                    <p class="text-sm text-gray-500 mt-1">
+                        Tap below to send a message on WhatsApp. Let us know your location and what you need painted!
+                    </p>
+                </div>
+
+                <!-- Call to Action Button -->
+                <a :href="whatsappUrl" 
+                   target="_blank" 
+                   class="flex items-center justify-center space-x-3 w-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-semibold py-4 px-6 rounded-xl transition duration-200 shadow-md transform active:scale-95 text-lg">
+                    <!-- Simple inline SVG for WhatsApp icon -->
+                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.966 0c3.178.001 6.165 1.24 8.413 3.494 2.25 2.253 3.487 5.244 3.485 8.421-.003 6.615-5.34 11.962-11.91 11.962-1.99-.001-3.952-.5-5.688-1.453L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.963C16.528 2.028 14.06 1.001 11.96 1.001c-5.444 0-9.866 4.372-9.87 9.802 0 1.714.452 3.393 1.312 4.88l-.994 3.635 3.72-.973zM16.698 13.7c-.26-.13-1.539-.76-1.779-.847-.24-.087-.414-.13-.588.13-.174.26-.674.847-.826 1.02-.152.174-.304.195-.564.065-.26-.13-1.1-.405-2.096-1.293-.775-.692-1.3-1.547-1.452-1.807-.152-.26-.016-.4.114-.53.117-.117.26-.304.39-.456.13-.152.174-.26.26-.434.087-.174.043-.326-.022-.456-.065-.13-.588-1.417-.805-1.943-.212-.51-.429-.44-.588-.44h-.504c-.174 0-.456.065-.695.304-.24.24-.913.893-.913 2.176s.934 2.52 1.064 2.7c.13.174 1.84 2.808 4.458 3.935.623.27.11.43.154.512.275.22.885.36 1.348.207.463-.152.766-.609.842-.804.076-.196.076-.36.043-.39-.033-.034-.174-.11-.434-.24z"/>
+                    </svg>
+                    <span>Get a Free Quote Now</span>
+                </a>
+
+                <div class="pt-4 border-t border-gray-100 text-xs text-gray-400">
+                    Typically responds within 1 hour
+                </div>
+            </div>
+
+            <!-- Simple TikTok Link Section -->
+            <div class="text-center mt-8">
+                <p class="text-sm text-gray-500">Check out our latest transformations on TikTok:</p>
+                <a href="https://www.tiktok.com/@proffesional_painter_decorator" 
+                   target="_blank" 
+                   class="inline-block mt-2 text-sm font-semibold text-indigo-600 hover:text-indigo-700 transition">
+                   @proffesional_painter_decorator →
+                </a>
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-white border-t border-gray-100 py-6 text-center text-xs text-gray-400">
+            &copy; 2026 Professional Painter Decorator. All rights reserved.
+        </footer>
+
+    </div>
+
+    <script>
+        const { createApp, ref } = Vue;
+
+        createApp({
+            setup() {
+                // REPLACE THIS WITH YOUR ACTUAL UK PHONE NUMBER
+                // Format: Country code (44) followed by number without leading zero (e.g., 447123456789)
+                const phoneNumber = ref('+447440296364'); 
+                
+                // Pre-filled message that appears in your WhatsApp chat when they click
+                const welcomeMessage = ref('Hi! I saw your TikTok profile and I would like to get a quote for a painting/decorating job in London.');
+
+                // Computes the clean WhatsApp link dynamically
+                const whatsappUrl = ref(`https://wa.me/${phoneNumber.value}?text=${encodeURIComponent(welcomeMessage.value)}`);
+
+                return {
+                    whatsappUrl
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
