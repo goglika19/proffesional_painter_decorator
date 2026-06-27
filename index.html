@@ -177,7 +177,7 @@ Send us a WhatsApp message with your location and photos of your project.
 <a
 :href="whatsappUrl"
 target="_blank"
-class="mt-6 flex items-center justify-center bg-green-500 hover:bg-green-600 text-white rounded-xl py-4 font-bold text-lg transition">
+class="mt-6 flex items-center justify-center bg-green-500 hover:bg-green-600 text-white rounded-xl py-4 font-bold text-lg transition text-center">
 
 Get a Free Quote
 
@@ -187,6 +187,113 @@ Get a Free Quote
 Typically responds within 1 hour
 </div>
 
+</div>
+
+<!-- CALCULATOR SECTION -->
+<div class="bg-white rounded-3xl shadow-xl p-6 border mt-8">
+<h2 class="text-xl font-bold mb-3 flex items-center gap-2">
+<span>🧮</span> Quick Price Estimator
+</h2>
+<p class="text-gray-500 text-xs mb-5">Configure your room details below to calculate a personalized project estimate.</p>
+
+<div class="space-y-5">
+<!-- Condition Selector -->
+<div>
+<label class="block text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">Room Condition & Finish</label>
+<div class="grid grid-cols-2 gap-2">
+<button 
+@click="calc.condition = 'new'"
+:class="calc.condition === 'new' ? 'border-indigo-600 bg-indigo-50 text-indigo-700' : 'border-gray-200 bg-white text-gray-600'"
+class="p-3 border rounded-xl text-left transition focus:outline-none"
+>
+<div class="font-bold text-sm">Simple Refresh</div>
+<div class="text-[11px] opacity-85 mt-0.5">New/good walls. £500/room</div>
+</button>
+<button 
+@click="calc.condition = 'old'"
+:class="calc.condition === 'old' ? 'border-indigo-600 bg-indigo-50 text-indigo-700' : 'border-gray-200 bg-white text-gray-600'"
+class="p-3 border rounded-xl text-left transition focus:outline-none"
+>
+<div class="font-bold text-sm">Pro Prep & Finish</div>
+<div class="text-[11px] opacity-85 mt-0.5">Old walls, filling/prep. £900/room</div>
+</button>
+</div>
+</div>
+
+<!-- Number of Rooms Selector -->
+<div>
+<div class="flex justify-between items-center mb-1">
+<label class="block text-xs font-semibold uppercase tracking-wider text-gray-500">Number of Rooms</label>
+<span class="text-sm font-bold bg-indigo-50 text-indigo-600 px-2.5 py-0.5 rounded-full">{{ calc.rooms }}</span>
+</div>
+<input type="range" min="1" max="10" v-model.number="calc.rooms" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-indigo-600">
+</div>
+
+<!-- Woodwork Add-ons -->
+<div class="space-y-3 bg-gray-50 p-4 rounded-xl border border-gray-100">
+<span class="block text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1">Woodwork Add-ons (Per Room)</span>
+
+<!-- Skirting Toggle -->
+<div class="flex items-center justify-between">
+<div class="text-sm">
+<span class="font-medium">Skirtings</span>
+<span class="text-xs text-gray-400 block">+{{ calc.condition === 'new' ? '£100' : '£175' }} per room</span>
+</div>
+<input type="checkbox" v-model="calc.hasSkirtings" class="w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 accent-indigo-600">
+</div>
+
+<hr class="border-gray-200 my-2">
+
+<!-- Frames Counter -->
+<div class="flex items-center justify-between">
+<div class="text-sm">
+<span class="font-medium">Door Frames</span>
+<span class="text-xs text-gray-400 block">+{{ calc.condition === 'new' ? '£50' : '£100' }} each</span>
+</div>
+<div class="flex items-center gap-2">
+<button @click="decrementFrames" class="w-7 h-7 bg-white border rounded-full font-bold flex items-center justify-center text-gray-500 shadow-sm">-</button>
+<span class="text-sm font-semibold w-5 text-center">{{ calc.frames }}</span>
+<button @click="calc.frames++" class="w-7 h-7 bg-white border rounded-full font-bold flex items-center justify-center text-gray-500 shadow-sm">+</button>
+</div>
+</div>
+
+<hr class="border-gray-200 my-2">
+
+<!-- Doors Counter -->
+<div class="flex items-center justify-between">
+<div class="text-sm">
+<span class="font-medium">Doors</span>
+<span class="text-xs text-gray-400 block">+{{ calc.condition === 'new' ? '£80' : '£200' }} each</span>
+</div>
+<div class="flex items-center gap-2">
+<button @click="decrementDoors" class="w-7 h-7 bg-white border rounded-full font-bold flex items-center justify-center text-gray-500 shadow-sm">-</button>
+<span class="text-sm font-semibold w-5 text-center">{{ calc.doors }}</span>
+<button @click="calc.doors++" class="w-7 h-7 bg-white border rounded-full font-bold flex items-center justify-center text-gray-500 shadow-sm">+</button>
+</div>
+</div>
+</div>
+
+<!-- Furniture Protection Add-on -->
+<div class="flex items-center justify-between p-3 bg-gray-50 rounded-xl border border-gray-100">
+<div>
+<div class="text-sm font-semibold">Furniture Protection</div>
+<div class="text-xs text-gray-400">Moving & protecting items (+£100 per room)</div>
+</div>
+<input type="checkbox" v-model="calc.hasFurniture" class="w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 accent-indigo-600">
+</div>
+
+<!-- Price Output -->
+<div class="bg-indigo-600 text-white p-5 rounded-2xl text-center mt-6 shadow-md">
+<div class="text-xs uppercase tracking-wider opacity-75">Estimated Total Price</div>
+<div class="text-3xl font-extrabold mt-1">£{{ estimatedTotal }}</div>
+<div class="text-[11px] opacity-75 mt-2">Prices include labor, expert preparation, and materials.</div>
+</div>
+
+<!-- Action WhatsApp Call-to-Action -->
+<a :href="calculatorWhatsappUrl" target="_blank" class="mt-4 flex items-center justify-center bg-gray-900 hover:bg-gray-800 text-white rounded-xl py-3.5 text-sm font-bold transition text-center">
+Send This Estimate via WhatsApp →
+</a>
+</div>
 </div>
 
 <!-- TIKTOK -->
@@ -308,7 +415,7 @@ class="rounded-2xl w-full max-h-[80vh] object-contain shadow-2xl">
 
 <script>
 
-const {createApp,ref}=Vue;
+const {createApp,ref,computed}=Vue;
 
 createApp({
 
@@ -321,6 +428,65 @@ const welcomeMessage="Hi! I saw your website and I would like a quote.";
 const whatsappUrl=`https://wa.me/${phoneNumber}?text=${encodeURIComponent(welcomeMessage)}`;
 
 const selectedPhoto=ref(null);
+
+// Pricing Rules & Engine configurations
+const calc = ref({
+condition: 'new', // 'new' (Simple Refresh) or 'old' (Pro Prep & Filling)
+rooms: 1,
+hasSkirtings: false,
+frames: 0,
+doors: 0,
+hasFurniture: false
+});
+
+const decrementFrames = () => {
+  if (calc.value.frames > 0) calc.value.frames--;
+};
+
+const decrementDoors = () => {
+  if (calc.value.doors > 0) calc.value.doors--;
+};
+
+const estimatedTotal = computed(() => {
+let total = 0;
+const count = calc.value.rooms;
+
+if (calc.value.condition === 'new') {
+// Simple Refresh Engine Configurations
+total += 500 * count;
+if (calc.value.hasSkirtings) total += 100 * count;
+total += (calc.value.frames * 50);
+total += (calc.value.doors * 80);
+} else {
+// Proper Prep, Filling & High Quality Finish Engine Configuration (Using mid range calculation £900)
+total += 900 * count;
+if (calc.value.hasSkirtings) total += 175 * count; // splitting mid-range 150-200
+total += (calc.value.frames * 100);
+total += (calc.value.doors * 200);
+}
+
+// Furniture Protection Multiplier Option
+if (calc.value.hasFurniture) {
+total += 100 * count;
+}
+
+return total;
+});
+
+// Dynamic summary parsing text string for structured WhatsApp message handoffs
+const calculatorWhatsappUrl = computed(() => {
+const serviceType = calc.value.condition === 'new' ? 'Simple Refresh' : 'Proper Prep & High Quality Finish';
+let breakdown = `Hi! I generated an interior estimation summary for my project:\n`;
+breakdown += `- Service Style: ${serviceType}\n`;
+breakdown += `- Number of Rooms: ${calc.value.rooms}\n`;
+if (calc.value.hasSkirtings) breakdown += `- Includes Skirting Painting\n`;
+if (calc.value.frames > 0) breakdown += `- Door Frames: ${calc.value.frames}\n`;
+if (calc.value.doors > 0) breakdown += `- Doors: ${calc.value.doors}\n`;
+if (calc.value.hasFurniture) breakdown += `- Includes Furniture Protection Handling\n`;
+breakdown += `Estimated Cost Summary: £${estimatedTotal.value}`;
+
+return `https://wa.me/${phoneNumber}?text=${encodeURIComponent(breakdown)}`;
+});
 
 const photos=ref([
 
@@ -395,7 +561,17 @@ openStory,
 
 nextStory,
 
-previousStory
+previousStory,
+
+calc,
+
+estimatedTotal,
+
+calculatorWhatsappUrl,
+
+decrementFrames,
+
+decrementDoors
 
 }
 
