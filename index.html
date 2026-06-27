@@ -1,109 +1,295 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Painter Decorator | London</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Vue 3 CDN -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Professional Painter Decorator | London</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<style>
+body{
+    font-family:Inter,sans-serif;
+}
+
+.scrollbar-hide::-webkit-scrollbar{
+    display:none;
+}
+.scrollbar-hide{
+    -ms-overflow-style:none;
+    scrollbar-width:none;
+}
+</style>
+
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased font-sans">
 
-    <div id="app" class="min-h-screen flex flex-col justify-between">
-        
-        <!-- Header / Hero Section -->
-        <header class="bg-white border-b border-gray-100 py-12 px-4 text-center shadow-sm">
-            <div class="max-w-xl mx-auto">
-                <span class="inline-block bg-indigo-50 text-indigo-600 text-xs font-semibold tracking-widest uppercase px-3 py-1 rounded-full mb-3">
-                    London & Surrounding Areas
-                </span>
-                <h1 class="text-3xl font-bold text-gray-900 tracking-tight sm:text-4xl mb-3">
-                    Professional Painter Decorator
-                </h1>
-                <p class="text-lg text-gray-600 mb-6">
-                    High-quality interior and exterior painting services. Transforming spaces across London with flawless finishes.
-                </p>
-                <div class="flex justify-center space-x-4 text-sm font-medium text-gray-500">
-                    <span class="flex items-center">✓ Domestic</span>
-                    <span class="flex items-center">✓ Commercial</span>
-                    <span class="flex items-center">✓ Free Estimates</span>
-                </div>
-            </div>
-        </header>
+<body class="bg-gray-50 text-gray-800">
 
-        <!-- Main Content Area -->
-        <main class="flex-grow max-w-md w-full mx-auto px-4 py-8 flex flex-col justify-center">
-            
-            <!-- Quote Card Component -->
-            <div class="bg-white rounded-2xl shadow-xl p-6 border border-gray-100 text-center space-y-6">
-                <div class="bg-indigo-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto text-2xl">
-                    🎨
-                </div>
-                
-                <div>
-                    <h2 class="text-xl font-semibold text-gray-900">Need a Quote?</h2>
-                    <p class="text-sm text-gray-500 mt-1">
-                        Tap below to send a message on WhatsApp. Let us know your location and what you need painted!
-                    </p>
-                </div>
+<div id="app" class="min-h-screen flex flex-col">
 
-                <!-- Call to Action Button -->
-                <a :href="whatsappUrl" 
-                   target="_blank" 
-                   class="flex items-center justify-center space-x-3 w-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-semibold py-4 px-6 rounded-xl transition duration-200 shadow-md transform active:scale-95 text-lg">
-                    <!-- Simple inline SVG for WhatsApp icon -->
-                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.966 0c3.178.001 6.165 1.24 8.413 3.494 2.25 2.253 3.487 5.244 3.485 8.421-.003 6.615-5.34 11.962-11.91 11.962-1.99-.001-3.952-.5-5.688-1.453L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.963C16.528 2.028 14.06 1.001 11.96 1.001c-5.444 0-9.866 4.372-9.87 9.802 0 1.714.452 3.393 1.312 4.88l-.994 3.635 3.72-.973zM16.698 13.7c-.26-.13-1.539-.76-1.779-.847-.24-.087-.414-.13-.588.13-.174.26-.674.847-.826 1.02-.152.174-.304.195-.564.065-.26-.13-1.1-.405-2.096-1.293-.775-.692-1.3-1.547-1.452-1.807-.152-.26-.016-.4.114-.53.117-.117.26-.304.39-.456.13-.152.174-.26.26-.434.087-.174.043-.326-.022-.456-.065-.13-.588-1.417-.805-1.943-.212-.51-.429-.44-.588-.44h-.504c-.174 0-.456.065-.695.304-.24.24-.913.893-.913 2.176s.934 2.52 1.064 2.7c.13.174 1.84 2.808 4.458 3.935.623.27.11.43.154.512.275.22.885.36 1.348.207.463-.152.766-.609.842-.804.076-.196.076-.36.043-.39-.033-.034-.174-.11-.434-.24z"/>
-                    </svg>
-                    <span>Get a Free Quote Now</span>
-                </a>
+<!-- HERO -->
+<header class="bg-white border-b py-12 px-4 text-center shadow-sm">
 
-                <div class="pt-4 border-t border-gray-100 text-xs text-gray-400">
-                    Typically responds within 1 hour
-                </div>
-            </div>
+<div class="max-w-xl mx-auto">
 
-            <!-- Simple TikTok Link Section -->
-            <div class="text-center mt-8">
-                <p class="text-sm text-gray-500">Check out our latest transformations on TikTok:</p>
-                <a href="https://www.tiktok.com/@proffesional_painter_decorator" 
-                   target="_blank" 
-                   class="inline-block mt-2 text-sm font-semibold text-indigo-600 hover:text-indigo-700 transition">
-                   @proffesional_painter_decorator →
-                </a>
-            </div>
+<span class="inline-block bg-indigo-50 text-indigo-600 text-xs font-semibold px-3 py-1 rounded-full mb-3">
+London & Surrounding Areas
+</span>
 
-        </main>
+<h1 class="text-4xl font-bold mb-3">
+Professional Painter Decorator
+</h1>
 
-        <!-- Footer -->
-        <footer class="bg-white border-t border-gray-100 py-6 text-center text-xs text-gray-400">
-            &copy; 2026 Professional Painter Decorator. All rights reserved.
-        </footer>
+<p class="text-gray-600 text-lg">
+High-quality interior and exterior painting services. Transforming homes across London.
+</p>
 
-    </div>
+</div>
 
-    <script>
-        const { createApp, ref } = Vue;
+</header>
 
-        createApp({
-            setup() {
-                // REPLACE THIS WITH YOUR ACTUAL UK PHONE NUMBER
-                // Format: Country code (44) followed by number without leading zero (e.g., 447123456789)
-                const phoneNumber = ref('+447440296364'); 
-                
-                // Pre-filled message that appears in your WhatsApp chat when they click
-                const welcomeMessage = ref('Hi! I saw your TikTok profile and I would like to get a quote for a painting/decorating job in London.');
+<!-- CONTENT -->
+<main class="max-w-md mx-auto w-full px-4 py-8 flex-1">
 
-                // Computes the clean WhatsApp link dynamically
-                const whatsappUrl = ref(`https://wa.me/${phoneNumber.value}?text=${encodeURIComponent(welcomeMessage.value)}`);
+<!-- STORIES -->
 
-                return {
-                    whatsappUrl
-                };
-            }
-        }).mount('#app');
-    </script>
+<div class="mb-8">
+
+<h2 class="text-xl font-bold mb-4">
+Recent Projects
+</h2>
+
+<div class="flex gap-5 overflow-x-auto pb-2 scrollbar-hide">
+
+<div
+v-for="(photo,index) in photos"
+:key="index"
+@click="openStory(index)"
+class="flex-shrink-0 text-center cursor-pointer">
+
+<div
+class="w-24 h-24 rounded-full p-[3px]
+bg-gradient-to-tr from-pink-500 via-orange-400 to-yellow-400">
+
+<img
+:src="photo.image"
+class="rounded-full object-cover w-full h-full border-2 border-white">
+
+</div>
+
+<p class="text-xs mt-2 font-medium">
+{{photo.title}}
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="bg-white rounded-3xl shadow-xl p-6 border">
+
+<div class="w-16 h-16 bg-indigo-100 rounded-full mx-auto flex items-center justify-center text-3xl">
+🎨
+</div>
+
+<h2 class="text-2xl font-bold text-center mt-5">
+Need a Quote?
+</h2>
+
+<p class="text-gray-500 text-center mt-2">
+Send us a WhatsApp message with your location and photos of your project.
+</p>
+
+<a
+:href="whatsappUrl"
+target="_blank"
+class="mt-6 flex items-center justify-center bg-green-500 hover:bg-green-600 text-white rounded-xl py-4 font-bold text-lg transition">
+
+Get a Free Quote
+
+</a>
+
+<div class="text-center text-xs text-gray-400 mt-5">
+Typically responds within 1 hour
+</div>
+
+</div>
+
+<!-- TIKTOK -->
+
+<div class="text-center mt-8">
+
+<p class="text-gray-500">
+See more transformations
+</p>
+
+<a
+href="https://www.tiktok.com/@proffesional_painter_decorator"
+target="_blank"
+class="font-semibold text-indigo-600 hover:text-indigo-700">
+
+@proffesional_painter_decorator →
+
+</a>
+
+</div>
+
+</main>
+
+<footer class="bg-white border-t py-6 text-center text-gray-400 text-sm">
+© 2026 Professional Painter Decorator
+</footer>
+
+<!-- STORY VIEWER -->
+
+<div
+v-if="selectedPhoto!==null"
+class="fixed inset-0 bg-black z-50 flex items-center justify-center">
+
+<!-- CLOSE -->
+
+<button
+@click="selectedPhoto=null"
+class="absolute top-5 right-5 text-white text-5xl">
+
+×
+
+</button>
+
+<!-- PREVIOUS -->
+
+<button
+v-if="selectedPhoto>0"
+@click.stop="previousStory"
+class="absolute left-4 text-white text-5xl">
+
+‹
+
+</button>
+
+<!-- NEXT -->
+
+<button
+v-if="selectedPhoto<photos.length-1"
+@click.stop="nextStory"
+class="absolute right-4 text-white text-5xl">
+
+›
+
+</button>
+
+<div class="max-w-md w-full px-4">
+
+<img
+:src="photos[selectedPhoto].image"
+class="rounded-2xl w-full max-h-[80vh] object-contain shadow-2xl">
+
+<h3 class="text-white text-center text-2xl mt-5 font-bold">
+
+{{photos[selectedPhoto].title}}
+
+</h3>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const {createApp,ref}=Vue;
+
+createApp({
+
+setup(){
+
+const phoneNumber="+447440296364";
+
+const welcomeMessage="Hi! I saw your website and I would like a quote.";
+
+const whatsappUrl=`https://wa.me/${phoneNumber}?text=${encodeURIComponent(welcomeMessage)}`;
+
+const selectedPhoto=ref(null);
+
+const photos=ref([
+
+{
+title:"Living Room",
+image:"images/story1.jpg"
+},
+
+{
+title:"Bedroom",
+image:"images/story2.jpg"
+},
+
+{
+title:"Kitchen",
+image:"images/story3.jpg"
+},
+
+{
+title:"Hallway",
+image:"images/story4.jpg"
+},
+
+{
+title:"Exterior",
+image:"images/story5.jpg"
+},
+
+{
+title:"Office",
+image:"images/story6.jpg"
+}
+
+]);
+
+function openStory(index){
+selectedPhoto.value=index;
+}
+
+function nextStory(){
+
+if(selectedPhoto.value<photos.value.length-1)
+selectedPhoto.value++;
+
+}
+
+function previousStory(){
+
+if(selectedPhoto.value>0)
+selectedPhoto.value--;
+
+}
+
+return{
+
+whatsappUrl,
+
+photos,
+
+selectedPhoto,
+
+openStory,
+
+nextStory,
+
+previousStory
+
+}
+
+}
+
+}).mount("#app");
+
+</script>
+
 </body>
 </html>
